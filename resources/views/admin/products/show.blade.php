@@ -3,8 +3,8 @@
 <h3 class="page-title">Productos</h3>
 <div class="row">
     <div class="col-md-6">
-        
-        
+
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 Ficha de producto
@@ -14,7 +14,7 @@
                             <tr>
                                 <th>Nombre</th>
                                 <td field-key='name'>{{ $product->name }}</td>
-                            </tr> 
+                            </tr>
                             <tr>
                                 <th>Slug (Nombre para la url)</th>
                                 <td field-key='name'>{{ $product->slug }}</td>
@@ -29,7 +29,7 @@
                             </tr>--}}
                             <tr>
                                 <th>Categoría</th>
-                                <td field-key='category'> {{ $product->category->name or ''}}</td>
+                                <td field-key='category'> {{ $product->category->name ?? ''}}</td>
                             </tr>
                             {{-- <tr>
                                 <th>Tag</th>
@@ -45,7 +45,7 @@
                                 <th>Foto 1</th>
                                 <td field-key='photo1'>@if($product->photo1)<a href="{{ asset('' . $product->photo1) }}" target="_blank"><img src="{{ asset('images/productos/' . $product->photo1) }}"/></a>@endif</td>
                             </tr>
-                            
+
                             <tr>
                                 <th>Foto 2</th>
                                 <td field-key='photo2'>@if($product->photo2)<a href="{{ asset(env('UPLOAD_PATH').'/' . $product->photo2) }}" target="_blank"><img src="{{ asset('images/productos/' . $product->photo2) }}"/></a>@endif</td>
@@ -58,7 +58,7 @@
                             <tr>
                                 <th>PDF</th>
                                 <td field-key='pdf'>{{ $product->pdf }}</td>
-                            </tr>                            
+                            </tr>
                             <tr>
                                 <th>Video</th>
                                 <td field-key='video'>{{ $product->video }}</td>
@@ -73,7 +73,7 @@
                             </tr>
                             <tr>
                                 <th>Fabricante</th>
-                                <td field-key='manufacturer'>{{ $product->manufacturer->name or '' }}</td>
+                                <td field-key='manufacturer'>{{ $product->manufacturer->name ?? '' }}</td>
                             </tr>
                             <tr>
                                 <th>Visible</th>

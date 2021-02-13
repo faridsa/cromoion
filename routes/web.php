@@ -12,8 +12,8 @@ Route::get('/productos/reactivos/{linea}/{categoria}', 'Front\ProductsController
 Route::get('/productos/reactivos/{linea}/{categoria}/{reactivo}', 'Front\ProductsController@showReactivo')->name('productos.reactivos.linea.categoria.reactivo');
 Route::get('/informacion/{cat}', 'Front\NewsController@showCat')->name('novedades');
 Route::get('/informacion/{cat}/{slug}', 'Front\NewsController@showNota')->name('novedad');
-Route::get('/servicios/encuesta', 'Front\EncuestasController@index')->name('encuesta');
-Route::post('/servicios/encuesta', 'Front\EncuestasController@store')->name('encuesta');
+//Route::get('/servicios/encuesta', 'Front\EncuestasController@index')->name('encuesta');
+//Route::post('/servicios/encuesta', 'Front\EncuestasController@store')->name('encuesta');
 Route::get('/servicios/pedidos', 'Front\PedidosController@index')->name('pedidos');
 Route::post('/servicios/pedidos', 'Front\PedidosController@store')->name('pedidos');
 Route::get('/servicios/{slug}', 'Front\InfoController@showContent');
@@ -23,25 +23,11 @@ Route::get('/biblioteca', 'Front\LibraryController@index')->name('pdf.list');
 Route::get('/biblioteca/{uuid}/download', 'Front\LibraryController@download')->name('pdf.download');
 Route::post('/buscar', 'Front\SearchController@search')->name('buscar');
 
+
+
 // Authentication Routes...
-$this->get('admin/login', 'Auth\LoginController@showLoginForm')->name('login');
-$this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
-$this->post('login', 'Auth\LoginController@login')->name('auth.login');
-$this->post('logout', 'Auth\LoginController@logout')->name('auth.logout');
+Auth::routes();
 
-// Change Password Routes...
-$this->get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
-$this->patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
-
-// Password Reset Routes...
-$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('auth.password.reset');
-$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('auth.password.reset');
-$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-$this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
-
-// Registration Routes..
-$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
-$this->post('register', 'Auth\RegisterController@register')->name('auth.register');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('home', 'Admin\HomeController@index')->name('home');

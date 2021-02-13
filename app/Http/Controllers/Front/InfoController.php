@@ -21,16 +21,19 @@ class InfoController extends FrontBaseController
             ->setTitle('Somos representes de las siguientes marcas')
             ->setDescription('Marcas que representamos')
             ->setKeywords(['laboratorio', 'insumos para laboratorios', 'reactivos', 'equipos para laboratorios']);
-            return view('public.institucional-fabricantes', compact('marcas'))->with('page', 'institucional');  
+            return view('public.institucional-fabricantes', compact('marcas'))->with('page', 'institucional');
         } else {
         	$item = ContentPage::where('visible', 1)->where('slug', $slug)->first();
             $item->views ++;
             $item->save();
+            $arr = explode("</p>", $item->page_text);
+            $parrafo = sizeof($arr)>0 ?  $arr[0] : 'Conozca las últimas novedades en reactivos y equipos para laboratorios. Somos representantes de las marcas más importantes';
+            $description = $item->excerpt ? : $parrafo;
         	$this->seo()
             ->setTitle($item->title)
-            ->setDescription($item->excerpt)
+            ->setDescription($description)
             ->setKeywords(['laboratorio', 'insumos para laboratorios', 'reactivos', 'equipos para laboratorios']);
-            return view('public.nota', compact('item'));  
+            return view('public.nota', compact('item'));
         }
     }
 }

@@ -37,7 +37,7 @@
          <label class="text-muted">
           <input type="checkbox" name="remember"> Mantener sesión
         </label>
-        <a href="{{ route('auth.password.reset') }}" class="pull-right"><small>Recuperar contraseña</small></a>   
+        <a href="{{ route('password.request') }}" class="pull-right"><small>Recuperar contraseña</small></a>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block" type"submit"><i class="fa fa-key"></i> Ingresar</button>

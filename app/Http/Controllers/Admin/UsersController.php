@@ -114,14 +114,11 @@ class UsersController extends Controller
         if (! Gate::allows('user_view')) {
             return abort(401);
         }
-        $roles = \App\Models\Role::get()->pluck('title', 'id')->prepend('Seleccione', '');$internal_notifications = \App\InternalNotification::whereHas('users',
-                    function ($query) use ($id) {
-                        $query->where('id', $id);
-                    })->get();
+        $roles = \App\Models\Role::get()->pluck('title', 'id')->prepend('Seleccione', '');
 
         $user = User::findOrFail($id);
 
-        return view('admin.users.show', compact('user', 'internal_notifications'));
+        return view('admin.users.show', compact('user'));
     }
 
 

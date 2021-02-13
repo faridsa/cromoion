@@ -29,16 +29,16 @@ Productos</h3>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 @if (count($products) > 0)
                 @foreach ($products as $product)
                 <tr data-entry-id="{{ $product->id }}">
-                    <td field-key='name'>{{ $product->name or '' }}</td>
-                    <td field-key='category'>{{ $product->category->name or '' }}</td>
-                    <td field-key='manufacturer'>{{ $product->manufacturer->name or '' }}</td>
+                    <td field-key='name'>{{ $product->name ?? '' }}</td>
+                    <td field-key='category'>{{ $product->category->name ?? '' }}</td>
+                    <td field-key='manufacturer'>{{ $product->manufacturer->name ?? '' }}</td>
                     <td field-key='photo1'>@if($product->photo1)<img src="{{ asset('images/productos/' . $product->photo1) }}" style="max-width:150px"/>@endif</td>
-                    {{-- 
+                    {{--
                     <td field-key='photo2'>@if($product->photo2)<img src="{{ asset('images/productos/' . $product->photo2) }}"/>@endif</td>
                     <td field-key='photo3'>@if($product->photo3)<img src="{{ asset('images/productos/' . $product->photo3) }}"/>@endif</td>
                     --}}

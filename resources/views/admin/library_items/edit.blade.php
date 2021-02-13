@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="page-title">Biblioteca / Archivos</h3>
-    
+
     {!! Form::model($library_item, ['method' => 'PUT', 'route' => ['admin.library_items.update', $library_item->id], 'files' => true,]) !!}
     {!! Form::hidden('uuid', old('uuid')) !!}
     <div class="panel panel-default">
@@ -50,7 +50,7 @@
                     {!! Form::label('pdf', 'Archivo PDF *', ['class' => 'control-label']) !!}
                     {!! Form::hidden('pdf', old('pdf')) !!}
                     @if ($library_item->pdf)
-                        <a href="{{ asset(env('UPLOAD_PATH').'/' . $library_item->pdf) }}" target="_blank">$library_item->pdf</a>
+                        <a href="{{ asset(env('UPLOAD_PATH').'/' . $library_item->pdf) }}" target="_blank">{{ $library_item->pdf }}</a>
                     @endif
                     {!! Form::file('pdf', ['class' => 'form-control']) !!}
                     {!! Form::hidden('pdf_max_size', 11) !!}
@@ -80,10 +80,10 @@
                             No
                         </label>
                     </div>
-                    
+
                 </div>
             </div>
-            
+
         </div>
     </div>
 

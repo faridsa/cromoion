@@ -21,13 +21,13 @@ Categorías</h3>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 @if (count($product_categories) > 0)
                 @foreach ($product_categories as $product_category)
                 <tr data-entry-id="{{ $product_category->id }}">
                     <td field-key='name'>{{ $product_category->name }}</td>
-                    <td field-key='description'>{!! $product_category->parent->name or '' !!}</td>
+                    <td field-key='description'>{!! $product_category->parent->name ?? '' !!}</td>
                     {{--
                     <td field-key='photo'>@if($product_category->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $product_category->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $product_category->photo) }}"/></a>@endif</td>
                     --}}

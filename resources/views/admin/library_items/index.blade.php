@@ -3,7 +3,7 @@
 
 @section('content')
      <a href="{{ route('admin.library_items.create') }}" class="btn btn-success pull-right">Agregar</a><h3 class="page-title">Biblioteca / Archivos</h3>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading">
             Listado
@@ -26,7 +26,7 @@
                         @foreach ($library_items as $library_item)
                             <tr data-entry-id="{{ $library_item->id }}">
                                 <td field-key='name'>{{ $library_item->name }}</td>
-                                <td field-key='category'>{{ $library_item->category->name or '' }}</td>
+                                <td field-key='category'>{{ $library_item->category->name ?? '' }}</td>
                                 <td field-key='link'>{{ url('biblioteca/'.$library_item->uuid.'/download') }}</td>
                                 <td field-key='downloads'>{{ $library_item->downloads }}</td>
                                 <td field-key='published'>{{ $library_item->published == 1 ? 'Sí' : 'No' }}</td>
@@ -83,8 +83,8 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
-        
+
     </script>
 @endsection

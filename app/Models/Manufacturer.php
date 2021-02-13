@@ -2,7 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * Class Manufacturer
@@ -14,14 +14,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 */
 class Manufacturer extends Model
 {
-    use SoftDeletes;
 
     protected $fillable = ['name', 'slug', 'brand'];
-    
+
     public function setNameAttribute($input)
     {
         $this->attributes['name'] = $input;
-        $this->attributes['slug'] = str_slug($input);
+        $this->attributes['slug'] = Str::slug($input);
     }
-    
+
 }

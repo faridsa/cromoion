@@ -22,7 +22,7 @@
                         </tr>
                         <tr>
                             <th>Categoría</th>
-                            <td field-key='category'>{{ $library_item->category->name or '' }}</td>
+                            <td field-key='category'>{{ $library_item->category->name ?? '' }}</td>
                         </tr>
                         <tr>
                             <th>Archivo</th>

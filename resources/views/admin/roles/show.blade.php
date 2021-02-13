@@ -20,13 +20,13 @@
                 </div>
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-    
+
 <li role="presentation" class="active"><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Usuarios</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-    
+
 <div role="tabpanel" class="tab-pane active" id="users">
 <table class="table table-bordered table-striped {{ count($users) > 0 ? '' : '' }}">
     <thead>
@@ -44,7 +44,7 @@
                 <tr data-entry-id="{{ $user->id }}">
                     <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->role->title or '' }}</td>
+                                <td>{{ $user->role->title ?? '' }}</td>
                                 <td>
                                     @can('user_view')
                                     <a href="{{ route('admin.users.show',[$user->id]) }}" class="btn btn-xs btn-primary">Ver</a>

@@ -44,7 +44,7 @@ class ProductsController extends Controller
             return abort(401);
         }
 
-        $cats = \App\Models\ProductCategory::orderBy('parent_id','name')->with('parent')->noChildren();
+        $cats = \App\Models\ProductCategory::orderBy('parent_id','asc')->with('parent')->noChildren();
 
        foreach ($cats as $cat){
              $name = $cat->name;
@@ -95,7 +95,7 @@ class ProductsController extends Controller
             return abort(401);
         }
         $product = Product::findOrFail($id);
-        $cats = \App\Models\ProductCategory::orderBy('parent_id','name')->with('parent')->noChildren();
+        $cats = \App\Models\ProductCategory::orderBy('parent_id','asc')->with('parent')->noChildren();
 
        foreach ($cats as $cat){
              $name = $cat->name;
@@ -106,7 +106,7 @@ class ProductsController extends Controller
        $tags = \App\Models\ProductTag::get()->pluck('name', 'id');
 
        $manufacturers = \App\Models\Manufacturer::get()->pluck('name', 'id')->prepend('Seleccione', '');
-       
+
 
        return view('admin.products.edit', compact('product', 'categories', 'tags', 'manufacturers'));
    }

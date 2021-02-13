@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * Class ContentTag
@@ -13,10 +14,10 @@ use Illuminate\Database\Eloquent\Model;
 class ContentTag extends Model
 {
     protected $fillable = ['title', 'slug'];
-    
+
     public function setTitleAttribute($input)
     {
         $this->attributes['title'] = $input;
-        $this->attributes['slug'] = str_slug($input);
+        $this->attributes['slug'] = Str::slug($input);
     }
 }

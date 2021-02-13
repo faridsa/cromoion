@@ -4,6 +4,7 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * Class Product
@@ -41,11 +42,11 @@ class Product extends Model
         $array['category'] = $this->category->slug;
         return $array;
     }
-    
+
     public function setNameAttribute($input)
     {
         $this->attributes['name'] = $input ? $input : null;
-        $this->attributes['slug'] = $input ? str_slug($input) : null;
+        $this->attributes['slug'] = $input ? Str::slug($input) : null;
     }
 
     /**
@@ -92,12 +93,12 @@ class Product extends Model
     {
         $this->attributes['visible'] = $input ? $input : null;
     }
-    
+
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
-    
+
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class, 'manufacturer_id')->withTrashed();
@@ -107,5 +108,5 @@ class Product extends Model
      {
          return $query->where('visible', 1);
      }
-    
+
 }

@@ -14,7 +14,7 @@
                     <div class="col-xs-12 form-group">
                         {!! Form::label('titulo', 'Titulo', ['class' => 'control-label']) !!}
                         {!! Form::text('titulo', old('titulo'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                        
+
                         @if($errors->has('titulo'))
                         <p class="help-block">
                             {{ $errors->first('titulo') }}
@@ -29,7 +29,7 @@
                         {!! Form::hidden('image_max_size', 1) !!}
                         {!! Form::hidden('image_max_width', 1920) !!}
                         {!! Form::hidden('image_max_height', 600) !!}
-                        
+
                         @if($errors->has('image_desktop'))
                         <p class="help-block">
                             {{ $errors->first('image_desktop') }}
@@ -42,7 +42,7 @@
                         {!! Form::hidden('image_max_size', 1) !!}
                         {!! Form::hidden('image_max_width', 1920) !!}
                         {!! Form::hidden('image_max_height', 600) !!}
-                        
+
                         @if($errors->has('image_mobile'))
                         <p class="help-block">
                             {{ $errors->first('image_mobile') }}
@@ -54,7 +54,7 @@
                     <div class="col-xs-12 form-group">
                         {!! Form::label('texto', 'Texto', ['class' => 'control-label']) !!}
                         {!! Form::textarea('texto', old('texto'), ['class' => 'form-control editor', 'placeholder' => '']) !!}
-                        
+
                         @if($errors->has('texto'))
                         <p class="help-block">
                             {{ $errors->first('texto') }}
@@ -66,7 +66,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('link', 'Link', ['class' => 'control-label']) !!}
                         {!! Form::text('link', old('link'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                        
+
                         @if($errors->has('link'))
                         <p class="help-block">
                             {{ $errors->first('link') }}
@@ -76,7 +76,7 @@
                    {{--}}<div class="col-sm-6 form-group">
                         {!! Form::label('texto_boton', 'Texto botón', ['class' => 'control-label']) !!}
                         {!! Form::text('texto_boton', old('texto_boton'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                        
+
                         @if($errors->has('texto_boton'))
                         <p class="help-block">
                             {{ $errors->first('texto_boton') }}
@@ -87,7 +87,7 @@
                     <div class="col-xs-3 form-group">
                         {!! Form::label('order', 'Orden', ['class' => 'control-label']) !!}
                         {!! Form::number('order', old('order'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                        
+
                         @if($errors->has('order'))
                         <p class="help-block">
                             {{ $errors->first('order') }}
@@ -111,10 +111,11 @@
                         @endif
                     </div>
                 </div>
-                
+
             </div>
         </div>
         {!! Form::submit('Guardar', ['class' => 'btn btn-danger']) !!}
+        <a href="{{ route('admin.slideshows.index') }}" class="btn btn-default">Cancelar</a>
         {!! Form::close() !!}
     </div>
     <div class="col-sm-6">
@@ -134,7 +135,7 @@
                 <img src="{{ asset('images/slideshows/'.$slideshow->imagen_movil) }}" class="img-responsive" style="max-width: 400px">
             </div>
             @endif
-            
+
         </div>
     </div>
 </div>

@@ -29,7 +29,7 @@ class StoreMessagesRequest extends FormRequest
             'phone' => 'required',
             'city' => 'required',
             'country' => 'required',
-            'comments' => 'required'
+            'comments' => 'required',
             'surname'   => 'honeypot',
             'token2'   => 'required|honeytime:5'
         ];

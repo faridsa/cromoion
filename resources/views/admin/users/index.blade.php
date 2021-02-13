@@ -5,7 +5,7 @@
     @can('user_create')
     <p>
         <a href="{{ route('admin.users.create') }}" class="btn btn-success pull-right">Agregar</a>
-        
+
     </p>
     @endcan
 
@@ -25,14 +25,14 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($users) > 0)
                         @foreach ($users as $user)
                             <tr data-entry-id="{{ $user->id }}">
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->role->title or '' }}</td>
+                                <td>{{ $user->role->title ?? '' }}</td>
                                 <td>{{ Form::checkbox("approved", 1, $user->approved == 1 ? true : false, ["disabled"]) }}</td>
                                 <td>
                                     @can('user_view')
@@ -64,7 +64,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
 
     </script>

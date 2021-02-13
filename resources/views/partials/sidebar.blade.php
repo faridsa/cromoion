@@ -92,7 +92,7 @@
     </a>
 </li>
 @endcan
-            {{-- 
+            {{--
             @can('evento_access')
             <li class="{{ $request->segment(2) == 'eventos' ? 'active' : '' }}">
                 <a href="{{ route('admin.eventos.index') }}">
@@ -106,8 +106,8 @@
             <li class="">
                 <a href="#">
                     <i class="fa fa-institution"></i>
-                    <span>Biblioteca</span>  
-                    <span class="fa arrow"></span>                                      
+                    <span>Biblioteca</span>
+                    <span class="fa arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="{{ $request->segment(2) == 'library_categories' ? 'active active-sub' : '' }}">
@@ -184,7 +184,7 @@
             </li>
             @endcan--}}
 
-            
+
             @can('user_access')
             <li class="{{ $request->segment(2) == 'users' ? 'active active-sub' : '' }}">
                 <a href="{{ route('admin.users.index') }}">
@@ -196,7 +196,7 @@
             </li>
             @endcan
 
-            {{-- 
+            {{--
             @can('internal_notification_access')
             <li class="{{ $request->segment(2) == 'internal_notifications' ? 'active' : '' }}">
                 <a href="{{ route('admin.internal_notifications.index') }}">
@@ -206,9 +206,9 @@
             </li>
             @endcan
             --}}
-            
+
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
-                <a href="{{ route('auth.change_password') }}">
+                <a href="{{ route('password.request') }}">
                     <i class="fa fa-key"></i>
                     <span class="title">Cambiar contraseña</span>
                 </a>
@@ -222,6 +222,6 @@
         </ul>
     </div>
 </div>
-{!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
+{!! Form::open(['route' => 'logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
 <button type="submit">Salir</button>
 {!! Form::close() !!}

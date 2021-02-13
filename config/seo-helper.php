@@ -32,7 +32,9 @@ return [
 
     'keywords'  => [
         'default'   => [
-            //
+            'laboratorio',
+            'reactivos para laboratorios',
+            'equipos para laboratorios'
         ],
     ],
 
@@ -92,7 +94,7 @@ return [
         'prefix'  => 'twitter:',
         'card'    => 'summary',
         'site'    => 'Username',
-        'title'   => 'Default Twitter Card title',
+        'title'   => 'Conozca las últimas novedades en reactivos y equipos para laboratorios. Somos representantes de las marcas más importantes',
         'metas'   => [
             //
         ],

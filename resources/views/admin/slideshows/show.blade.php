@@ -47,6 +47,7 @@
             <p>&nbsp;</p>
 
             <a href="{{ route('admin.slideshows.index') }}" class="btn btn-default">Volver</a>
+            <a href="{{ route('admin.slideshows.edit',[$slideshow->id]) }}" class="btn btn-info">Modificar</a>
         </div>
     </div>
 @stop

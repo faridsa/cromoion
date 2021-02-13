@@ -2,6 +2,7 @@
 namespace App\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * Class ProductCategory
@@ -14,16 +15,18 @@ use Illuminate\Database\Eloquent\Model;
 */
 class ProductCategory extends Model
 {
-    use Searchable, \Kalnoy\Nestedset\NodeTrait;
+    //use Searchable, \Kalnoy\Nestedset\NodeTrait;
+    use Searchable;
+
     public $asYouType = true;
 
     protected $fillable = ['name', 'slug', 'description', 'photo', 'parent_id'];
-    
-    
+
+
     public function setNameAttribute($input)
     {
         $this->attributes['name'] = $input ? $input : null;
-        $this->attributes['slug'] = $input ? str_slug($input) : null;
+        $this->attributes['slug'] = $input ? Str::slug($input) : null;
     }
 
 
@@ -35,7 +38,7 @@ class ProductCategory extends Model
     {
         $this->attributes['parent_id'] = $input ? $input : null;
     }
-    
+
     public function parent()
     {
         return $this->belongsTo(self::class, 'parent_id');
@@ -68,5 +71,5 @@ class ProductCategory extends Model
     }
 
 
-    
+
 }

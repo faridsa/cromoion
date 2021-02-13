@@ -37,10 +37,13 @@ class NewsController extends FrontBaseController
     public function showNota($cat, $slug){
     	$item = ContentPage::where('visible', 1)->where('slug', $slug)->first();
         $item->views ++;
+        $arr = explode("</p>", $item->page_text);
+        $parrafo = sizeof($arr)>0 ?  $arr[0] : 'Conozca las últimas novedades en reactivos y equipos para laboratorios. Somos representantes de las marcas más importantes';
+        $description = $item->excerpt ? : $parrafo;
         $item->save();
     	$this->seo()
         ->setTitle($item->title)
-        ->setDescription($item->excerpt)
+        ->setDescription($description)
         ->setKeywords(['laboratorio', 'reactivos para laboratorios', 'equipos para laboratorios']);
         return view('public.nota', compact('item'));
     }

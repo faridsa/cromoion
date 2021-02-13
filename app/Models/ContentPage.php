@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
 /**
@@ -20,13 +21,13 @@ class ContentPage extends Model
     use SoftDeletes, Searchable;
 
     protected $fillable = ['title', 'slug','page_text', 'excerpt', 'featured_image','video', 'visible', 'featured', 'order', 'views', 'category_id'];
-    
-    
+
+
     public function category()
     {
         return $this->belongsTo(ContentCategory::class, 'category_id');
     }
-    
+
     public function tag_id()
     {
         return $this->belongsToMany(ContentTag::class, 'content_page_content_tag');
@@ -34,7 +35,7 @@ class ContentPage extends Model
     public function setTitleAttribute($input)
     {
         $this->attributes['title'] = $input;
-        $this->attributes['slug'] = str_slug($input);
+        $this->attributes['slug'] = Str::slug($input);
     }
-    
+
 }

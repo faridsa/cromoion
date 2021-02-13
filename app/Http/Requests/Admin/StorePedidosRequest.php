@@ -29,7 +29,7 @@ class StorePedidosRequest extends FormRequest
             'tipo_de_producto' => 'required',
             'pais' => 'required',
             'comentarios' => 'required',
-            'otro' => 'required_if':'tipo_de_producto','otro',
+            'otro' => 'required_if:tipo_de_producto,otro',
         ];
     }
 }

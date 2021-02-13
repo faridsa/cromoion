@@ -51,10 +51,10 @@ class SurveyForm extends Mailable
      */
     public function build()
     {
-        
+
         $subject = 'Encuesta desde el sitio web';
         return $this->from('no-reply@cromoion.com.ar', 'Cromoion')
             ->subject($subject)
-            ->view('public.emails.encuesta')
+            ->view('public.emails.encuesta');
     }
 }

@@ -20,13 +20,13 @@
                 </div>
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-    
+
 <li role="presentation" class="active"><a href="#products" aria-controls="products" role="tab" data-toggle="tab">Productos</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-    
+
 <div role="tabpanel" class="tab-pane active" id="products">
 <table class="table table-bordered table-striped {{ count($products) > 0 ? 'datatable' : '' }}">
     <thead>
@@ -72,7 +72,7 @@
                                 <td field-key='video'>{{ $product->video }}</td>
                                 <td field-key='link'>{{ $product->link }}</td>
                                 <td field-key='featured'>{{ $product->featured }}</td>
-                                <td field-key='manufacturer'>{{ $product->manufacturer->name or '' }}</td>
+                                <td field-key='manufacturer'>{{ $product->manufacturer->name ?? '' }}</td>
                                 <td field-key='visible'>{{ $product->visible }}</td>
                                                                 <td>
                                     @can('product_view')
