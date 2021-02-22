@@ -23,7 +23,7 @@ class ProductsController extends FrontBaseController
         return view('public.equipos', compact('products'))->with('page', 'productos');
     }
      public function showEquipo($slug){
-            $product = Product::where('visible', 1)->where('category_id', 1)->where('slug', $slug)->first();
+            $product = Product::where('visible', 1)->where('category_id', 1)->where('slug', $slug)->firstOrFail();
             if($product == null) {
                 return redirect('/')->with('status', 'Lo sentimos, no se pudo encontrar la página indicada');
             }
@@ -48,18 +48,18 @@ class ProductsController extends FrontBaseController
     }
 
     public function showLineaReactivos($linea){
-        $linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->with('children')->first();
+        $linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->with('children')->firstOrFail();
         $this->seo()
             ->setTitle('Reactivos')
-            ->setDescription('Linea ' . $linea->name .' a su disposición')
+            ->setDescription('Linea ' . $linea->name ?? '' .' a su disposición')
             ->setKeywords(['laboratorio', 'insumos para laboratorios', 'reactivos', 'equipos para laboratorios']);
 
         return view('public.reactivos-linea', compact('linea'))->with('page', 'productos');
     }
 
     public function showCategoriaReactivos($linea, $categoria){
-        $linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->first();
-        $categoria = ProductCategory::where('slug', $categoria)->where('parent_id', $linea->id)->with('children')->first();
+        $linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->firstOrFail();
+        $categoria = ProductCategory::where('slug', $categoria)->where('parent_id', $linea->id)->with('children')->firstOrFail();
         $this->seo()
             ->setTitle('Reactivos')
             ->setDescription('Linea ' . $linea->name .' / '. $categoria->name .' a su disposición')
@@ -70,9 +70,9 @@ class ProductsController extends FrontBaseController
 
    
      public function showReactivo($linea, $categoria, $slug){
-            $product = Product::where('visible', 1)->where('slug', $slug)->first();
-            $linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->first();
-            $categoria = ProductCategory::where('slug', $categoria)->where('parent_id', $linea->id)->first();
+            $product = Product::where('visible', 1)->where('slug', $slug)->firstOrFail();
+            $linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->firstOrFail();
+            $categoria = ProductCategory::where('slug', $categoria)->where('parent_id', $linea->id)->firstOrFail();
             $product->views ++;
             $product->save();
             $this->seo()
@@ -93,7 +93,7 @@ class ProductsController extends FrontBaseController
     }
 
     public function showLineaInsumos($linea){
-    	$linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->first();
+    	$linea = ProductCategory::where('slug', $linea)->where('parent_id', 2)->firstOrFail();
         $products = Product::where('category_id', $linea->id)->where('visible', 1)->orderBy('name')->get();
         $this->seo()
             ->setTitle('Insumos para laboratorio')
@@ -104,7 +104,7 @@ class ProductsController extends FrontBaseController
         return view('public.insumos-linea', compact('linea', 'products'))->with('page', 'productos');
     }
      public function showInsumo($linea, $slug){
-            $product = Product::where('visible', 1)->where('slug', $slug)->first();
+            $product = Product::where('visible', 1)->where('slug', $slug)->firstOrFail();
             $linea = ProductCategory::find($product->category_id);
             $seccion = ProductCategory::find($linea->parent_id);
             $product->views ++;

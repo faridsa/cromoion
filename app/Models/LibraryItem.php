@@ -35,7 +35,7 @@ class LibraryItem extends Model
     
     public function category()
     {
-        return $this->belongsTo(LibraryCategory::class, 'category_id')->withTrashed();
+        return $this->belongsTo(LibraryCategory::class, 'category_id');
     }
 
     public function scopePublished($query)

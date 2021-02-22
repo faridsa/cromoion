@@ -101,7 +101,7 @@ class Product extends Model
 
     public function manufacturer()
     {
-        return $this->belongsTo(Manufacturer::class, 'manufacturer_id')->withTrashed();
+        return $this->belongsTo(Manufacturer::class, 'manufacturer_id');
     }
 
     public function scopePublished($query)
