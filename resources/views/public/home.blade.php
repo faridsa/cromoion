@@ -40,10 +40,10 @@
 							<small class="label news-category">{{ $item->category->title }}</small>
 						</p>
 						<h3 class="text-uppercase">{{ $item->title }}</h3>
-						@php 
+						@php
 						$output=explode('</p>', $item->page_text); @endphp
 						{!! $output[0] !!}
-						<p> <a href="{{ url('informacion/novedades/'.$item->slug) }}" class="btn btn-sm btn-primary">Más Información</a></p>
+						<p> <a href="{{ url('informacion/novedades/'.$item->slug) }}" class="btn btn-sm btn-primary" title="Obtenga más infornación sobre el producto {{ $item->title }}">Más Información</a></p>
 					</div>
 				</div>
 				@endforeach
@@ -66,7 +66,7 @@
 									</p>
 									<h3>{{ $item->name }}</h3>
 									{!!$item->page_text!!}
-									@php 
+									@php
 									$path = 'productos/';
 									if($item->category->parent){
 										$path .= $item->category->parent->slug .'/';
@@ -82,7 +82,7 @@
 				</div>
 			</section>--}}
 			@endif
-		</div>	
+		</div>
 		<div class="col-md-6">
 			{{--@include('partials.public-subscription-form')--}}
 		</div>

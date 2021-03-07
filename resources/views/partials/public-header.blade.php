@@ -1,7 +1,7 @@
 <header class="fixed-top bg-light">
 	<div class="p-2 bg-dark" data-aos="fade">
 		<div class="container">
-		<p class="text-right text-light"><a href="tel:541146443205" class="text-light">(5411) 4644-3205/3206</a> | <a href="mailto:reporte@cromoion.com" class="text-light">reporte@cromoion.com</a> | <a href=""><i class="icon ion-facebook"></i></a></p>
+		<p class="text-right text-light"><a href="tel:541146443205" class="text-light">(5411) 4644-3205/3206</a> | <a href="mailto:reporte@cromoion.com" class="text-light">reporte@cromoion.com</a> {{--| <a href=""><i class="icon ion-facebook"></i></a>--}}</p>
 	</div>
 	</div>
 <nav class="navbar navbar-expand-lg navbar-light"  data-aos="fade">
@@ -35,7 +35,7 @@
 					</ul>
 				</li>
 				@endif
-				
+
 				<li class="nav-item">
 					<a class="nav-link text-uppercase" href="{{ url('/contacto') }}">contacto</a>
 				</li>
@@ -43,7 +43,7 @@
 					{!! Form::open(['url' => route('buscar'), 'class'=>"form-inline"]) !!}
 					<div class="input-group">
 						<input name="q" type="text" class="form-control" placeholder="Ingrese codigo o texto a buscar" aria-label="Buscar..." style="width:280px">
-						
+
 					</div>
 				</form>
 			</li>

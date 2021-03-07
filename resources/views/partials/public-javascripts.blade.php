@@ -1,6 +1,7 @@
 <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed&display=swap" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/aos.js') }}"></script>
 
 <script>
 	jQuery(document).ready(function ($) {
@@ -15,7 +16,7 @@
 			});
 		});
 		$('body').css('padding-top',origOffsetY);
-	});     
+	});
 
 window.onload = function() {
   AOS.init({
