@@ -8,7 +8,7 @@
         "php": "^7.2.5|^8.0",
         "arcanedev/seo-helper": "^2.2",
         "fideloper/proxy": "^4.4",
-        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/guzzle": "^6.5.6",
         "intervention/image": "^2.5",
         "jenssegers/agent": "^2.5",
         "kalnoy/nestedset": "^5.0",
